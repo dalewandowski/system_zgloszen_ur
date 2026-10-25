@@ -7,12 +7,15 @@ public class User
  public int Id { get; set; }
  public string Name { get; set; } = "";
  public string Email { get; set; } = "";
- public string Password { get; set; } = "";
+ public string PasswordHash { get; set; } = "";
  public UserRole Role { get; set; } = UserRole.User;
- public int FailureId { get; set; }
- public List<Failure> Failures { get; set; } = null!;
+ 
+ public List<Failure> Failures { get; set; } = [];
+ public List<Repair> Repairs { get; set; } = [];
 }
 
+
+// user Roles enum
 public enum UserRole
 {
     Admin,
