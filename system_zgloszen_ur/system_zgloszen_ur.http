@@ -1,0 +1,6 @@
+@system_zgloszen_ur_HostAddress = http://localhost:5201
+
+GET {{system_zgloszen_ur_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
