@@ -65,6 +65,8 @@ namespace system_zgloszen_ur.Migrations
 
                     b.HasIndex("ReportedById");
 
+                    b.HasIndex("Status");
+
                     b.ToTable("Failures");
                 });
 
@@ -130,6 +132,9 @@ namespace system_zgloszen_ur.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });

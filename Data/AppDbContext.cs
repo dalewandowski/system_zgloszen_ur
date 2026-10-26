@@ -22,6 +22,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
         e.Property(u => u.PasswordHash).IsRequired().HasMaxLength(255);
         e.Property(u => u.Email).IsRequired().HasMaxLength(255);
+        e.HasIndex(u => u.Email).IsUnique();
         e.Property(u => u.Name).IsRequired().HasMaxLength(255);
         e.Property(u => u.Role).IsRequired().HasConversion<string>().HasMaxLength(50);
     });
@@ -38,6 +39,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         e.Property(f => f.MachineName).IsRequired().HasMaxLength(255);
         e.Property(f => f.Location).IsRequired().HasMaxLength(255);
         e.Property(f => f.Status).IsRequired().HasConversion<string>().HasMaxLength(50);
+        e.HasIndex(f => f.Status);
         
     });
 
