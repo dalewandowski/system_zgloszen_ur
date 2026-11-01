@@ -8,7 +8,7 @@ namespace System_zgloszen_UR.DTOs.Failures
 {
     public record FailureDto
     {
-        
+
         public int Id { get; set; }
         public string Title { get; set; } = "";
         public string FailureDescription { get; set; } = "";

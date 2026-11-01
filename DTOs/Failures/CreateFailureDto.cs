@@ -14,12 +14,10 @@ public class CreateFailureDto
     public string FailureDescription { get; set; } = "";
     [Required]
     [MaxLength(255)]
-     public string MachineName { get; set; } = "";
+    public string MachineName { get; set; } = "";
     [Required]
     [MaxLength(255)]
     public string Location { get; set; } = "";
-    public FailureStatus Status { get; set; } = FailureStatus.New;
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
 
 }

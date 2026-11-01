@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using system_zgloszen_ur.Entities;
 using system_zgloszen_ur.Models;
 using System_zgloszen_UR.DTOs.Failures;
@@ -10,9 +11,10 @@ namespace System_zgloszen_UR.Mappers
 {
     public static class FailureMapper
     {
+
+        // metoda mapująca obiekt Failure na obiekt FailureDto, wysyłana do klienta w odpowiedzi na żądanie HTTP. Klient otrzymyje tylko niezbędne informacje o awarii, bez ujawniania poufnych danych, takich jak identyfikator użytkownika, który zgłosił awarię.
         public static FailureDto FailureToDto(Failure failure)
         {
-            if (failure == null) return null;
             return new FailureDto
             {
                 Id = failure.Id,
@@ -22,27 +24,34 @@ namespace System_zgloszen_UR.Mappers
                 Location = failure.Location,
                 Status = failure.Status,
                 CreatedAt = failure.CreatedAt,
-                ReportedById = 5,
-                ReportedBy = "Damian Lewandowski"
+                ReportedById = failure.ReportedById,
+                ReportedBy = failure.ReportedBy.Name
 
             };
         }
 
 
-        //Dodajemy nową awarie mapujemy z DTO na Encje Failure
+        //Dodajemy nową awarie mapujemy z DTO na Encje Failure. Klient wysyła dane w formacie JSON, które są deserializowane do obiektu CreateFailureDto. Następnie metoda mapuje te dane na obiekt Failure, który jest zapisywany w bazie danych.
         public static Failure MapFailureToEntity(CreateFailureDto failure)
         {
+
             return new Failure
             {
                 Title = failure.Title,
                 FailureDescription = failure.FailureDescription,
                 MachineName = failure.MachineName,
                 Location = failure.Location,
-                Status = FailureStatus.New,
-                CreatedAt = DateTime.UtcNow
             };
         }
+
+        public static void UpdateFailureFromDto(Failure failure, UpdateFailureDto updateFailureDto)
+        {
+            failure.Title = updateFailureDto.Title;
+            failure.FailureDescription = updateFailureDto.FailureDescription;
+            failure.MachineName = updateFailureDto.MachineName;
+            failure.Location = updateFailureDto.Location;
+        }
     };
-    
-    
-}
+
+
+};
