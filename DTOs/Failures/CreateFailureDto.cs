@@ -18,6 +18,8 @@ public class CreateFailureDto
     [Required]
     [MaxLength(255)]
     public string Location { get; set; } = "";
+    [Required]
+    public int ReportedById { get; set; }
 
 
 }

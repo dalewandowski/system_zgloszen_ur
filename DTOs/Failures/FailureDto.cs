@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using system_zgloszen_ur.Entities;
 
 namespace System_zgloszen_UR.DTOs.Failures
 {
-    public record FailureDto
+    public class FailureDto
     {
 
         public int Id { get; set; }
@@ -17,6 +14,6 @@ namespace System_zgloszen_UR.DTOs.Failures
         public FailureStatus Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public int ReportedById { get; set; }
-        public string ReportedBy { get; set; } = "";
+
     }
 }

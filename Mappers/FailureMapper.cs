@@ -25,8 +25,6 @@ namespace System_zgloszen_UR.Mappers
                 Status = failure.Status,
                 CreatedAt = failure.CreatedAt,
                 ReportedById = failure.ReportedById,
-                ReportedBy = failure.ReportedBy.Name
-
             };
         }
 
@@ -41,6 +39,7 @@ namespace System_zgloszen_UR.Mappers
                 FailureDescription = failure.FailureDescription,
                 MachineName = failure.MachineName,
                 Location = failure.Location,
+                ReportedById = failure.ReportedById,
             };
         }
 
